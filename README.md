@@ -1,2 +1,4 @@
 # maybe-usefull-stuff
-A repository with some of my stuff that could be usefull for others.
+A repository with scripts that could be usefull for others.
+
+Use at your own risk.
