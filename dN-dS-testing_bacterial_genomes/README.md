@@ -2,7 +2,11 @@
 
 In this repository you find several scripts that form a small pipeline to process aligned core-genes. Clone the repository if you find it interesting and modify the scripts for your own use.
 
-The pipeline calculate the pairwise dN/dS ratio's between all the genes in an alignment in order to determine if there is positive or purifying selection found between the genes of a species of interest. The genes need to have a `nucleotide similarity between 70 and 95 % `to give meaningful results. That will mostly be highly consevered genes. The program Get_homologues can be use to determine the core-genes of a species using a nucleotide cut-off and outputs for each core-genes a fasta file with unaligned sequences
+The pipeline calculate the pairwise dN/dS ratio's between all the genes in an alignment in order to determine if there is positive or purifying selection found between the genes of a species of interest. 
+
+The genes need to have a `nucleotide similarity between 70 and 95 % `to give meaningful results. That will mostly be highly consevered genes.
+
+The program Get_homologues can be use to determine the core-genes of a species using a nucleotide cut-off and outputs for each core-genes a fasta file with unaligned sequences
 
 The unaligned sequences can be aligned using PRANK and the alignments need to by in the PHYLIP format `*.phy`
 
