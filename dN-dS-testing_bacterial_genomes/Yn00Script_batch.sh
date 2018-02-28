@@ -11,6 +11,9 @@
 # OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS WITH THE
 # SOFTWARE.
 ##########################################################################################################################
+# This script was modified by Thomas H.A. Haverkamp
+#
+##########################################################################################################################
 
 
 ##This shell script calls a simple for loop to automate codeml in combination with the script codemlScript.py This script was put together
