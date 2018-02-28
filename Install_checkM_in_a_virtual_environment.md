@@ -5,7 +5,7 @@ This will set-up checkm in user friendly way.
 
 ## Commands for abel (you can skip this for normal linux machines)
 
-#### on the ablel cluster, remove loaded modules from memory
+#### on the abel cluster, remove loaded modules from memory
 ```
  module purge    # remove all loaded modules
 ```
