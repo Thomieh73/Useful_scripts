@@ -15,15 +15,15 @@ module load python2 hmmer/3.1b2 prodigal pplacer
 ```
 
 ## Commands to install checkm on a linux machine
-####check if the python package virtualenv is available
+#### check if the python package virtualenv is available
 ```
 virtualenv —help
 ```
-####setting up the virtual environment where we will install checkm
+#### setting up the virtual environment where we will install checkm
 ```
  virtualenv checkm_env
 ```
-####active virtual environment
+#### active virtual environment
 ```
  source checkm_env/bin/activate
 ```
@@ -39,7 +39,7 @@ Install the [latest release](http://matsen.fhcrc.org/pplacer/) from pplacer
 When this is properly set-up then continue.
 
 
-####Now we remove everything from the python path
+#### Now we remove everything from the python path
 ```
 unset PYTHONPATH
 ```
@@ -118,7 +118,7 @@ e.g. on the abel work area
 checkm data setRoot /work/users/thhaverk/checkm_db/
 ```
 
-####Now we run the test command
+#### Now we run the test command
 
 ```
 checkm test ~/checkm_test_results
