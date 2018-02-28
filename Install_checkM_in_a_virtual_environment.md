@@ -1,4 +1,4 @@
-#How to install checkm in a virtual environment
+# How to install checkm in a virtual environment
 
 We want to install checkm in a virtual environment so that we have no trouble running checkm due to issues with other python installations that might need different versions of python or python packages.
 This will set-up checkm in user friendly way.
