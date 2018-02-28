@@ -81,7 +81,7 @@ source /cluster/bin/jobsetup
 
 #### downloading the reference dataset to a folder of your choice. on abel do this on work or in a folder in your local area:
 
-**on work:**
+**on work:** replace _thhaverk_ with your username
 
 ```
 mkdir /work/users/thhaverk/checkm_db
@@ -112,7 +112,7 @@ tar -xzvf checkm_data_2015_01_16.tar.gz
 ```
 checkm data setRoot YOURDIRECTORY_NAME
 ```
-e.g. on the abel work area
+e.g. in my case, on the abel work area, 
 
 ```
 checkm data setRoot /work/users/thhaverk/checkm_db/
@@ -124,4 +124,4 @@ checkm data setRoot /work/users/thhaverk/checkm_db/
 checkm test ~/checkm_test_results
 ```
 
-When this finished without any error messages. than checkm is correctlt installed.
+When this finished without any error messages. than checkm is correctly installed.
