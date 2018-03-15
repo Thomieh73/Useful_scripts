@@ -11,3 +11,8 @@ Use at your own risk.
 
 ## Calculation dN/dS ratios from bacterial genomes
 [dN-dS testing bacterial genomes](dN-dS-testing_bacterial_genomes/README.md)
+
+## a phylogseq tutorial
+viewing the html page:[Phyloseq tutorial html page](phyloseq_tutorial.html)
+
+viewing the github formated document:[Phyloseq github](phyloseq_tutorial.md)
