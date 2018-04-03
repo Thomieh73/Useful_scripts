@@ -1,127 +1,71 @@
-# How to install checkm in a virtual environment
+# How to install Checkm in a virtual environment
+We want to install [checkM](https://github.com/Ecogenomics/CheckM/wiki) in a virtual environment so that we have no trouble running checkm due to issues with other python installations that might need different versions of python or python packages. This is convenient when working on a high computing cluster, since it allows us to use different kinds of software packages without intereference due to differences in the set-up of these packages.
 
-We want to install checkm in a virtual environment so that we have no trouble running checkm due to issues with other python installations that might need different versions of python or python packages.
-This will set-up checkm in user friendly way.
+The best way, in my opinion, is to create a virtual environment using Anaconda or Miniconda, since it creates a virtual environment without any links to other variables in your normal environment. Anaconda is a much larger package than miniconda, but both can set-up the same packages. 
 
-## Commands for abel (you can skip this for normal linux machines)
+If you have not yet installed Anaconda or miniconda you can do that using the instructions found here:
+[Conda download page](https://conda.io/docs/user-guide/install/download.html). Note that when you install Anaconda it will add a line to your `.bashrc` file. That however, does not work well with the slurm set-up on a high computing cluster such as abel.
 
-#### on the abel cluster, remove loaded modules from memory
+You should add to to your .bashrc file the following line, so that it points to the conda.sh file in your anaconda installation. Replace the text in capitals in the line below. You can use `nano` to modify your .bashrc file.
+```
+. /ABSOLUTE-PATH-TO-DIRECTORY/anaconda3/etc/profile.d/conda.sh
+```
+After changing your .bashrc file you should logout and login into the compute node, or start a new terminal window.
+
+## Commands for Abel (you can skip this for normal linux machines)
+
+#### on the abel cluster, remove loaded modules from memory.
 ```
  module purge    # remove all loaded modules
 ```
-#### loading the python2 module (version 2.7.10)
-```
-module load python2 hmmer/3.1b2 prodigal pplacer
-```
 
 ## Commands to install checkm on a linux machine
-#### check if the python package virtualenv is available
+after installation and restarting your terminal window, check if conda is available, type:
 ```
-virtualenv —help
+conda
 ```
-#### setting up the virtual environment where we will install checkm
-```
- virtualenv checkm_env
-```
-#### active virtual environment
-```
- source checkm_env/bin/activate
-```
+When it is present than continue below. If not, make sure that you have your `.bashrc` file correctly set-up.
 
-## installing dependencies
-Install Hmmer 3.1b2 according to instructions
-[Hmmer 3.1b2](http://eddylab.org/software/hmmer3/3.1b2/hmmer-3.1b2-macosx-intel.tar.gz)
+#### Create a python 2.7 virtual environment with conda. 
+We give this environment the name of the software we want to install. Here I use: `checkm_env`.
 
-Install prodigal by downloading the archive from [here](https://github.com/hyattpd/Prodigal) and follow the instructions
+```
+conda create -n checkm_env python=2.7
+```
+When the installation is finished we need to activate the virtual environment so that we can install the checkm software and all its dependencies.
+##### active virtual environment
+```
+conda activate checkm_env
+```
+That should give a commandline prompt looking like this:
 
-Install the [latest release](http://matsen.fhcrc.org/pplacer/) from pplacer 
+```
+(checkm_env) bash-4.1$
+```
+Now we are ready to install checkm in this environment using the conda package created for checkM.
+[bioconda checkM packages](https://anaconda.org/bioconda/checkm-genome). Install checkm with:
 
-When this is properly set-up then continue.
+```
+conda install -c bioconda checkm-genome 
+```
+This command installs all the dependencies in the checkm environment we created. After the installation finished you can test the installation by typing:
 
-
-#### Now we remove everything from the python path
-```
-unset PYTHONPATH
-```
-
-#### Check python path is empty
-```
-echo $PYTHONPATH
-```
-
-#### Next we install all checkm dependencies with pip
-```
-pip install numpy
-pip install scipy
-pip install matplotlib
-pip install pysam
-pip install dendropy
-```
-#### and finally we run the checkm installer
-```
-pip install checkm-genome
-```
-
-#### test if checkm can be called
-type:
 ```
 checkm
 ```
+This should start complaining about your database directory. Give it a directory you find suitable and then let is run. It will finish with giving you an overview of the commands.
 
-#### on abel load a small qlogin to start testing the pipeline
-
-```
-qlogin --account=cees --mem-per-cpu=3800M --cpus-per-task=4 --time=2:0:0
-```
-
-source that job
-```
-source /cluster/bin/jobsetup
-```
-
-#### downloading the reference dataset to a folder of your choice. on abel do this on work or in a folder in your local area:
-
-**on work:** replace _thhaverk_ with your username
-
-```
-mkdir /work/users/thhaverk/checkm_db
-
-cd /work/users/thhaverk/checkm_db
-```
-**on your local area**
-
-```
-mkdir ~/nobackup/checkm_db
-
-cd ~/nobackup/checkm_db
-```
-
-download the dataset with wget
-
-```
-wget https://data.ace.uq.edu.au/public/CheckM_databases/checkm_data_2015_01_16.tar.gz
-```
-unpacking the archive
-
-```
-tar -xzvf checkm_data_2015_01_16.tar.gz
-```
-
-#### setting the directory with the reference data
-
-```
-checkm data setRoot YOURDIRECTORY_NAME
-```
-e.g. in my case, on the abel work area, 
-
-```
-checkm data setRoot /work/users/thhaverk/checkm_db/
-```
-
-#### Now we run the test command
+A better test is to run a test job. You can do that the following way:
 
 ```
 checkm test ~/checkm_test_results
 ```
+That should finish without any problems. Note that when checkm crashes with a error, it is usually in the pplacer step, and is usually caused by to little memory. I need in this test step more than 4Gb of memory and for a large job checkM can use up to 35 Gb easily.
 
-When this finished without any error messages. than checkm is correctly installed.
+When the test job is finished we need to deactivate the virtual environment.
+
+```
+conda deactivate
+```
+
+
