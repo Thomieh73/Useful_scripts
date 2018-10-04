@@ -18,4 +18,4 @@ viewing the html page:[Phyloseq tutorial html page](phyloseq_tutorial.html)
 viewing the github formated document:[Phyloseq github](phyloseq_tutorial.md)
 
 ## Comparing bacterial genomes with MASH and FastANI
-[Comparison of Vibrionales genome similarity](genome_comparison/Comparison of Vibrionales genome similarity.md)
+[Comparison of Vibrionales genome similarity](genome_comparison/Comparison_of_Vibrionales_genome_similarity.md)
